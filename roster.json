@@ -1,0 +1,307 @@
+{
+  "domains": [
+    {
+      "name": "Higher Education",
+      "trends": [
+        {
+          "id": "he-enrollment",
+          "title": "Enrollment & Demographic Pressure Intensifies",
+          "indicators": [
+            {
+              "id": "he-1",
+              "name": "Total postsecondary enrollment",
+              "source": "National Student Clearinghouse Research Center",
+              "source_query": "National Student Clearinghouse Research Center current term enrollment estimates",
+              "cadence": "Each term",
+              "description": "Headline signal for whether the demographic cliff is showing up in actual enrollment numbers yet.",
+              "thresholds": [
+                {"label": "Worsening", "band": "YoY decline > 2%"},
+                {"label": "On track", "band": "Flat to -2% YoY"},
+                {"label": "Improving", "band": "YoY growth positive"}
+              ],
+              "horizon": "1-2 yr"
+            },
+            {
+              "id": "he-2",
+              "name": "High school graduate pipeline",
+              "source": "WICHE Knocking at the College Door",
+              "source_query": "WICHE Knocking at the College Door high school graduate projections latest",
+              "cadence": "Annual",
+              "description": "Leading indicator (3-5 yr out) for the size of the future applicant pool.",
+              "thresholds": [
+                {"label": "Worsening", "band": "Revised projections steeper decline than prior forecast"},
+                {"label": "On track", "band": "Matches prior projection"},
+                {"label": "Improving", "band": "Revised upward"}
+              ],
+              "horizon": "3-5 yr"
+            },
+            {
+              "id": "he-3",
+              "name": "FAFSA completion rate",
+              "source": "National College Attainment Network (NCAN) tracker",
+              "source_query": "NCAN FAFSA completion tracker current cycle vs prior year",
+              "cadence": "Monthly (Oct-June cycle)",
+              "description": "Near-term leading indicator of next fall's enrollment, especially for access-sensitive institutions.",
+              "thresholds": [
+                {"label": "Worsening", "band": "Trailing prior cycle by > 5%"},
+                {"label": "On track", "band": "Within +/-5% of prior cycle"},
+                {"label": "Improving", "band": "Ahead of prior cycle by > 5%"}
+              ],
+              "horizon": "All"
+            }
+          ]
+        },
+        {
+          "id": "he-credentials",
+          "title": "Alternative Credentials Are Displacing the Degree",
+          "indicators": [
+            {
+              "id": "he-4",
+              "name": "Non-degree vs. degree completions",
+              "source": "National Student Clearinghouse Research Center",
+              "source_query": "National Student Clearinghouse certificate completions growth vs degree completions",
+              "cadence": "Annual",
+              "description": "Whether certificates/badges are growing faster than degree completions.",
+              "thresholds": [
+                {"label": "Accelerating", "band": "Non-degree growth outpaces degree growth by > 3x"},
+                {"label": "On track", "band": "Outpaces by 1-3x"},
+                {"label": "Stalling", "band": "Growth rates converge or reverse"}
+              ],
+              "horizon": "3-5 yr"
+            },
+            {
+              "id": "he-5",
+              "name": "Employer degree-requirement removal rate",
+              "source": "LinkedIn Economic Graph / Indeed Hiring Lab",
+              "source_query": "job postings dropping degree requirements trend LinkedIn Indeed",
+              "cadence": "Quarterly",
+              "description": "Demand-side validation that employers are actually dropping degree requirements.",
+              "thresholds": [
+                {"label": "Accelerating", "band": ">1 ppt/quarter increase in postings without degree requirement"},
+                {"label": "On track", "band": "0.3-1 ppt/quarter increase"},
+                {"label": "Stalling", "band": "Flat or reversing"}
+              ],
+              "horizon": "1-2 yr"
+            },
+            {
+              "id": "he-6",
+              "name": "Institutional AI/credential adoption",
+              "source": "EDUCAUSE Annual AI Landscape Survey",
+              "source_query": "EDUCAUSE AI landscape survey latest results credential adoption",
+              "cadence": "Annual",
+              "description": "Whether institutions are building AI-related credentials and adapting curricula.",
+              "thresholds": [
+                {"label": "Accelerating", "band": "Majority of institutions report new AI-related credentials"},
+                {"label": "On track", "band": "Growing minority (20-50%)"},
+                {"label": "Stalling", "band": "<20%, little YoY change"}
+              ],
+              "horizon": "3-5 yr"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Technology",
+      "trends": [
+        {
+          "id": "tech-ai-adoption",
+          "title": "Enterprise AI Adoption Accelerates",
+          "indicators": [
+            {
+              "id": "tech-1",
+              "name": "Enterprises with AI in production",
+              "source": "McKinsey State of AI annual survey",
+              "source_query": "McKinsey State of AI survey enterprises AI in production latest",
+              "cadence": "Annual",
+              "description": "Gap between AI experimentation and real production deployment.",
+              "thresholds": [
+                {"label": "Accelerating", "band": ">10 ppt YoY increase in production deployment"},
+                {"label": "On track", "band": "3-10 ppt YoY increase"},
+                {"label": "Stalling", "band": "<3 ppt or flat"}
+              ],
+              "horizon": "1-2 yr"
+            },
+            {
+              "id": "tech-2",
+              "name": "AI-related job postings share",
+              "source": "LinkedIn Economic Graph / Indeed Hiring Lab",
+              "source_query": "AI job postings share of total hiring trend latest",
+              "cadence": "Monthly",
+              "description": "Real-time labor-market demand signal for AI skills.",
+              "thresholds": [
+                {"label": "Accelerating", "band": "Share growing >0.2 ppts/month"},
+                {"label": "On track", "band": "0.05-0.2 ppts/month"},
+                {"label": "Stalling", "band": "Flat or declining"}
+              ],
+              "horizon": "All"
+            },
+            {
+              "id": "tech-3",
+              "name": "Hyperscaler AI capex",
+              "source": "Microsoft, Google, Amazon, Meta quarterly earnings",
+              "source_query": "Microsoft Google Amazon Meta AI capex guidance latest quarter",
+              "cadence": "Quarterly",
+              "description": "Whether infrastructure investment still supports the demand narrative.",
+              "thresholds": [
+                {"label": "Accelerating", "band": "Combined capex guidance raised QoQ"},
+                {"label": "On track", "band": "Capex holding at prior guidance"},
+                {"label": "Easing", "band": "Capex guidance cut"}
+              ],
+              "horizon": "1-2 yr"
+            }
+          ]
+        },
+        {
+          "id": "tech-labor",
+          "title": "Tech Sector Labor Contraction",
+          "indicators": [
+            {
+              "id": "tech-4",
+              "name": "Tech layoffs volume",
+              "source": "layoffs.fyi tracker",
+              "source_query": "layoffs.fyi tech layoffs monthly total latest",
+              "cadence": "Monthly",
+              "description": "Direct measure of workforce contraction in the sector.",
+              "thresholds": [
+                {"label": "Worsening", "band": ">20,000 reported layoffs/month"},
+                {"label": "On track", "band": "5,000-20,000/month"},
+                {"label": "Improving", "band": "<5,000/month"}
+              ],
+              "horizon": "All"
+            },
+            {
+              "id": "tech-5",
+              "name": "Tech/information sector unemployment rate",
+              "source": "BLS (Information + Professional/Business Services)",
+              "source_query": "BLS unemployment rate information sector professional business services latest",
+              "cadence": "Monthly",
+              "description": "Whether layoffs are translating into sustained unemployment or fast re-absorption.",
+              "thresholds": [
+                {"label": "Worsening", "band": "Rate rising >0.3 ppt over 3 months"},
+                {"label": "On track", "band": "Stable +/-0.3 ppt"},
+                {"label": "Improving", "band": "Declining >0.3 ppt over 3 months"}
+              ],
+              "horizon": "1-2 yr"
+            },
+            {
+              "id": "tech-6",
+              "name": "AI regulation activity",
+              "source": "IAPP / NCSL AI legislation tracker",
+              "source_query": "IAPP NCSL AI legislation tracker enacted laws latest",
+              "cadence": "Quarterly",
+              "description": "Regulatory overhead that could shape hiring, compliance costs, and product velocity.",
+              "thresholds": [
+                {"label": "Accelerating", "band": "New enacted state/federal AI laws this quarter"},
+                {"label": "On track", "band": "Bills advancing but not enacted"},
+                {"label": "Stalling", "band": "No significant legislative movement"}
+              ],
+              "horizon": "3-5 yr"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Future of Work",
+      "trends": [
+        {
+          "id": "fow-skills",
+          "title": "Skills-Based Hiring Replaces Degree Requirements",
+          "indicators": [
+            {
+              "id": "fow-1",
+              "name": "Share of postings dropping degree requirements",
+              "source": "LinkedIn Economic Graph / Indeed Hiring Lab",
+              "source_query": "job postings dropping degree requirements trend latest",
+              "cadence": "Quarterly",
+              "description": "Labor-market side view that cross-validates the Higher Ed credential-substitution trend.",
+              "thresholds": [
+                {"label": "Accelerating", "band": ">1 ppt/quarter increase"},
+                {"label": "On track", "band": "0.3-1 ppt/quarter increase"},
+                {"label": "Stalling", "band": "Flat or reversing"}
+              ],
+              "horizon": "1-2 yr"
+            },
+            {
+              "id": "fow-2",
+              "name": "Skills-based hiring adoption rate",
+              "source": "LinkedIn Talent Solutions annual report",
+              "source_query": "LinkedIn Talent Solutions skills-based hiring adoption report latest",
+              "cadence": "Annual",
+              "description": "Whether employers report actually changing hiring practice, not just posting language.",
+              "thresholds": [
+                {"label": "Accelerating", "band": ">5 ppt YoY increase"},
+                {"label": "On track", "band": "1-5 ppt YoY increase"},
+                {"label": "Stalling", "band": "<1 ppt or flat"}
+              ],
+              "horizon": "3-5 yr"
+            },
+            {
+              "id": "fow-3",
+              "name": "WEF net displacement forecast",
+              "source": "World Economic Forum Future of Jobs Report",
+              "source_query": "World Economic Forum Future of Jobs Report net displacement forecast latest",
+              "cadence": "Biennial (watch for interim commentary)",
+              "description": "Structural, long-horizon signal on net job creation vs. displacement from automation/AI.",
+              "thresholds": [
+                {"label": "Worsening", "band": "Forecast revised toward net displacement"},
+                {"label": "On track", "band": "Consistent with prior forecast"},
+                {"label": "Improving", "band": "Revised toward net creation"}
+              ],
+              "horizon": "5+ yr"
+            }
+          ]
+        },
+        {
+          "id": "fow-hybrid",
+          "title": "Hybrid Work Norm Solidifies, RTO Mandates Plateau",
+          "indicators": [
+            {
+              "id": "fow-4",
+              "name": "Return-to-office mandate tracker",
+              "source": "Flex Index / WFH Research",
+              "source_query": "Flex Index return to office mandates trend latest",
+              "cadence": "Quarterly",
+              "description": "Whether major employers are still tightening in-office requirements or have plateaued.",
+              "thresholds": [
+                {"label": "Tightening", "band": "Net increase in full-RTO mandates"},
+                {"label": "Plateaued", "band": "No significant net change"},
+                {"label": "Loosening", "band": "Net increase in flexible/hybrid policies"}
+              ],
+              "horizon": "1-2 yr"
+            },
+            {
+              "id": "fow-5",
+              "name": "Remote job postings share",
+              "source": "Ladders / FlexJobs remote work reports",
+              "source_query": "Ladders FlexJobs remote job postings share trend latest",
+              "cadence": "Monthly",
+              "description": "Direct measure of remote-eligible hiring supply.",
+              "thresholds": [
+                {"label": "Declining", "band": "Share falling >1 ppt/quarter"},
+                {"label": "Stable", "band": "+/-1 ppt/quarter"},
+                {"label": "Growing", "band": "Rising >1 ppt/quarter"}
+              ],
+              "horizon": "All"
+            },
+            {
+              "id": "fow-6",
+              "name": "Overall quits rate (JOLTS)",
+              "source": "BLS JOLTS",
+              "source_query": "BLS JOLTS quits rate latest",
+              "cadence": "Monthly",
+              "description": "General labor market confidence/mobility context for RTO leverage.",
+              "thresholds": [
+                {"label": "Accelerating", "band": "Quits rate >= 2.4%"},
+                {"label": "On track", "band": "2.0-2.4%"},
+                {"label": "Easing", "band": "<2.0%"}
+              ],
+              "horizon": "All"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

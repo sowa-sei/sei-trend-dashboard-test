@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trend Monitoring Dashboard</title>
+<style>
+  :root{
+    --navy:#152A4E;
+    --navy-light:#3E5C8A;
+    --ink:#1B2733;
+    --muted:#6B7686;
+    --line:#E4E7EC;
+    --paper:#FFFFFF;
+    --bg:#F7F8FA;
+    --worsen-bg:#FBE9E7; --worsen-fg:#B3432B;
+    --ontrack-bg:#E4F4EF; --ontrack-fg:#1E7D5C;
+    --ease-bg:#EFECE4; --ease-fg:#7A6E58;
+    --tag-monthly:#1E8E6B;
+    --tag-quarterly:#152A4E;
+    --tag-annual:#B8862B;
+    --tag-other:#7A828C;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+  header{
+    background:var(--navy); color:#fff; padding:18px 28px;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:8px;
+  }
+  header h1{ font-size:1.15rem; margin:0; font-weight:600; letter-spacing:.2px;}
+  header .updated{ font-size:.78rem; color:#B7C4DA; }
+
+  nav.domains{
+    display:flex; gap:0; background:var(--paper); border-bottom:1px solid var(--line);
+    padding:0 24px; overflow-x:auto;
+  }
+  nav.domains button{
+    border:none; background:transparent; padding:14px 18px; font-size:.92rem;
+    font-weight:600; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent;
+    white-space:nowrap;
+  }
+  nav.domains button.active{ color:var(--navy); border-bottom-color:var(--navy); }
+
+  main{ padding:24px 28px 60px; max-width:1400px; margin:0 auto; }
+  .trend-block{ margin-bottom:36px; }
+  .trend-title{ font-size:1.3rem; font-weight:700; margin:0 0 4px; color:var(--ink); }
+  .trend-sub{ color:var(--muted); font-size:.85rem; margin:0 0 16px; }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:16px;
+  }
+  .card{
+    background:var(--paper); border:1px solid var(--line); border-radius:6px;
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .card .topbar{ height:5px; }
+  .card .head{ padding:14px 16px 4px; }
+  .card .meta{ display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+  .card .source{ font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; font-weight:600;}
+  .cadence-tag{
+    font-size:.68rem; font-weight:700; color:#fff; padding:3px 9px; border-radius:3px;
+    white-space:nowrap; text-transform:uppercase;
+  }
+  .card .name{ font-size:1rem; font-weight:700; margin:8px 0 10px; line-height:1.3; }
+  .card .desc-label, .card .status-label{
+    font-size:.68rem; font-weight:700; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.03em; margin:10px 16px 4px;
+  }
+  .card .desc{ font-size:.82rem; color:var(--ink); margin:0 16px 8px; line-height:1.45;}
+  .status-box{
+    margin:0 16px 10px; padding:10px 12px; border-radius:5px; font-size:.8rem; line-height:1.4;
+  }
+  .status-box .lab{ font-weight:700; display:block; margin-bottom:2px; }
+  .status-box.worsen{ background:var(--worsen-bg); color:var(--worsen-fg); }
+  .status-box.ontrack{ background:var(--ontrack-bg); color:var(--ontrack-fg); }
+  .status-box.ease{ background:var(--ease-bg); color:var(--ease-fg); }
+  .footer{
+    margin-top:auto; padding:10px 16px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; gap:8px;
+  }
+  .horizon{
+    font-size:.66rem; font-weight:700; color:#fff; padding:3px 9px; border-radius:3px;
+    background:var(--tag-other); text-transform:uppercase;
+  }
+  .footer .src-link{ font-size:.7rem; color:var(--navy-light); text-decoration:none; }
+  .footer .src-link:hover{ text-decoration:underline; }
+  .asof{ font-size:.7rem; color:var(--muted); padding:0 16px 12px; margin-top:-4px;}
+
+  .empty{ text-align:center; color:var(--muted); padding:60px 20px; font-size:.9rem; }
+  .banner{
+    background:#FFF6E5; border:1px solid #F0D28A; color:#7A5B12; font-size:.8rem;
+    padding:8px 16px; border-radius:5px; margin-bottom:20px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Target Focus Trends — Monitoring Dashboard</h1>
+  <div class="updated" id="updatedAt">Loading...</div>
+</header>
+
+<nav class="domains" id="domainNav"></nav>
+
+<main id="main">
+  <div class="empty">Loading dashboard data...</div>
+</main>
+
+<script>
+// Point this at the raw JSON produced by the scheduled agent, e.g.:
+// https://raw.githubusercontent.com/<you>/<repo>/main/data.json
+const DATA_URL = "data.json";
+
+// Seeded with the first real research run (July 7, 2026) via web search,
+// following the same source list and thresholds as roster.json. Once the
+// GitHub Action is live, point DATA_URL above at your hosted data.json and
+// this will simply be overridden by the fetch.
+const SEED_DATA = {"generated_at":"2026-07-07T00:00:00Z","domains":[{"name":"Higher Education","trends":[{"id":"he-enrollment","title":"Enrollment & Demographic Pressure Intensifies","indicators":[{"id":"he-1","name":"Total postsecondary enrollment","source":"National Student Clearinghouse Research Center","cadence":"Each term","description":"Headline signal for whether the demographic cliff is showing up in actual enrollment numbers yet.","thresholds":[{"label":"Worsening","band":"YoY decline > 2%"},{"label":"On track","band":"Flat to -2% YoY"},{"label":"Improving","band":"YoY growth positive"}],"horizon":"1-2 yr","current":{"status_label":"Improving","value":"18.6M students, +1.0% YoY","as_of":"Spring 2026","note":"Undergraduate enrollment (+1.3%) is driving overall growth, led by community colleges and certificate programs; graduate enrollment essentially flat (-0.1%).","source_url":"https://www.studentclearinghouse.org/news/spring-enrollment-undergraduate-growth-continues-while-graduate-enrollment-holds-steady/"}},{"id":"he-2","name":"High school graduate pipeline","source":"WICHE Knocking at the College Door","cadence":"Annual","description":"Leading indicator (3-5 yr out) for the size of the future applicant pool.","thresholds":[{"label":"Worsening","band":"Revised projections steeper decline than prior forecast"},{"label":"On track","band":"Matches prior projection"},{"label":"Improving","band":"Revised upward"}],"horizon":"3-5 yr","current":{"status_label":"On track","value":"11th edition still current (Dec 2024)","as_of":"2024 edition, no newer release","note":"No new edition published since; national peak of ~3.9M graduates in 2025 confirmed, decline through 2041 remains the operative forecast.","source_url":"https://www.wiche.edu/knocking/"}},{"id":"he-3","name":"FAFSA completion rate","source":"National College Attainment Network (NCAN) tracker","cadence":"Monthly (Oct-June cycle)","description":"Near-term leading indicator of next fall's enrollment, especially for access-sensitive institutions.","thresholds":[{"label":"Worsening","band":"Trailing prior cycle by > 5%"},{"label":"On track","band":"Within +/-5% of prior cycle"},{"label":"Improving","band":"Ahead of prior cycle by > 5%"}],"horizon":"All","current":{"status_label":"Improving","value":"59.1% completion (all-time record)","as_of":"June 30, 2026 (class of 2026)","note":"Up from 53.9% for the class of 2025 -- about 5 points ahead, driven by an early FAFSA launch and smoother processing.","source_url":"https://www.ncan.org/Web/News/Class-of-2026-Sets-New-June-30-FAFSA-Completion-Record.aspx"}}]},{"id":"he-credentials","title":"Alternative Credentials Are Displacing the Degree","indicators":[{"id":"he-4","name":"Non-degree vs. degree completions","source":"National Student Clearinghouse Research Center","cadence":"Annual","description":"Whether certificates/badges are growing faster than degree completions.","thresholds":[{"label":"Accelerating","band":"Non-degree growth outpaces degree growth by > 3x"},{"label":"On track","band":"Outpaces by 1-3x"},{"label":"Stalling","band":"Growth rates converge or reverse"}],"horizon":"3-5 yr","current":{"status_label":"Accelerating","value":"Certificates +11.2% vs. bachelor's -1.3%","as_of":"2023-24 academic year","note":"Certificate completions hit a record 525,200, growing 11% while bachelor's and associate completions both declined -- clearest sign yet of workforce-aligned credential substitution.","source_url":"https://www.insidehighered.com/news/student-success/academic-life/2025/04/10/college-completion-growth-spurred-certificates"}},{"id":"he-5","name":"Employer degree-requirement removal rate","source":"LinkedIn Economic Graph / Indeed Hiring Lab","cadence":"Quarterly","description":"Demand-side validation that employers are actually dropping degree requirements.","thresholds":[{"label":"Accelerating","band":">1 ppt/quarter increase in postings without degree requirement"},{"label":"On track","band":"0.3-1 ppt/quarter increase"},{"label":"Stalling","band":"Flat or reversing"}],"horizon":"1-2 yr","current":{"status_label":"Stalling","value":"Composition-adjusted bachelor's-requirement share ticked up to 18.6%","as_of":"November 2025","note":"After hitting a 5-year low of 18.5% in March 2024, the share of postings requiring a degree (adjusted for job mix) has been trending slightly upward for two years -- policy announcements are outpacing actual hiring-practice change.","source_url":"https://www.hiringlab.org/2026/01/28/where-do-college-degrees-still-matter-in-a-skills-first-job-market/"}},{"id":"he-6","name":"Institutional AI/credential adoption","source":"EDUCAUSE Annual AI Landscape Survey","cadence":"Annual","description":"Whether institutions are building AI-related credentials and adapting curricula.","thresholds":[{"label":"Accelerating","band":"Majority of institutions report new AI-related credentials"},{"label":"On track","band":"Growing minority (20-50%)"},{"label":"Stalling","band":"<20%, little YoY change"}],"horizon":"3-5 yr","current":{"status_label":"Accelerating","value":"95% now have a work-related AI strategy; 64% report 5+ strategy elements","as_of":"January 2026 (EDUCAUSE 'Impact of AI on Work in Higher Education')","note":"Institutional caution is fading too -- only 15% describe leadership as cautious about AI, down from 20-23% in 2024-25.","source_url":"https://www.educause.edu/research/2026/the-impact-of-ai-on-work-in-higher-education"}}]}]},{"name":"Technology","trends":[{"id":"tech-ai-adoption","title":"Enterprise AI Adoption Accelerates","indicators":[{"id":"tech-1","name":"Enterprises with AI in production","source":"McKinsey State of AI annual survey","cadence":"Annual","description":"Gap between AI experimentation and real production deployment.","thresholds":[{"label":"Accelerating","band":">10 ppt YoY increase in production deployment"},{"label":"On track","band":"3-10 ppt YoY increase"},{"label":"Stalling","band":"<3 ppt or flat"}],"horizon":"1-2 yr","current":{"status_label":"Accelerating","value":"88% regularly use AI in at least one function","as_of":"November 2025 survey","note":"Up from a mix of narrower gen-AI-only figures around 71-78% a year earlier, though McKinsey notes nearly two-thirds still haven't begun enterprise-wide scaling.","source_url":"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"}},{"id":"tech-2","name":"AI-related job postings share","source":"LinkedIn Economic Graph / Indeed Hiring Lab","cadence":"Monthly","description":"Real-time labor-market demand signal for AI skills.","thresholds":[{"label":"Accelerating","band":"Share growing >0.2 ppts/month"},{"label":"On track","band":"0.05-0.2 ppts/month"},{"label":"Stalling","band":"Flat or declining"}],"horizon":"All","current":{"status_label":"Accelerating","value":"Indeed AI Tracker hit 4.2% of postings","as_of":"End of 2025","note":"AI-mentioning postings surged over 130% in 2025 while total postings grew only ~6% above pre-pandemic baseline -- a clear divergence.","source_url":"https://www.hiringlab.org/2026/01/22/january-labor-market-update-jobs-mentioning-ai-are-growing-amid-broader-hiring-weakness/"}},{"id":"tech-3","name":"Hyperscaler AI capex","source":"Microsoft, Google, Amazon, Meta quarterly earnings","cadence":"Quarterly","description":"Whether infrastructure investment still supports the demand narrative.","thresholds":[{"label":"Accelerating","band":"Combined capex guidance raised QoQ"},{"label":"On track","band":"Capex holding at prior guidance"},{"label":"Easing","band":"Capex guidance cut"}],"horizon":"1-2 yr","current":{"status_label":"Accelerating","value":"Combined 2026 capex guidance ~$725B, up 77% YoY","as_of":"Q1 2026 earnings (late April 2026)","note":"Alphabet and Meta both raised guidance mid-year; Microsoft's $190B and Amazon's ~$200B came in above analyst estimates.","source_url":"https://www.tomshardware.com/tech-industry/big-tech/big-techs-ai-spending-plans-reach-725-billion"}}]},{"id":"tech-labor","title":"Tech Sector Labor Contraction","indicators":[{"id":"tech-4","name":"Tech layoffs volume","source":"layoffs.fyi tracker","cadence":"Monthly","description":"Direct measure of workforce contraction in the sector.","thresholds":[{"label":"Worsening","band":">20,000 reported layoffs/month"},{"label":"On track","band":"5,000-20,000/month"},{"label":"Improving","band":"<5,000/month"}],"horizon":"All","current":{"status_label":"Worsening","value":"~120,000-185,000 roles cut so far in 2026","as_of":"Through early July 2026","note":"Averaging well above 20,000/month; May 2026 was the highest single month in years, with AI cited as the leading driver in 56% of 2026 layoff events.","source_url":"https://techcrunch.com/2026/07/06/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/"}},{"id":"tech-5","name":"Tech/information sector unemployment rate","source":"BLS (Information + Professional/Business Services)","cadence":"Monthly","description":"Whether layoffs are translating into sustained unemployment or fast re-absorption.","thresholds":[{"label":"Worsening","band":"Rate rising >0.3 ppt over 3 months"},{"label":"On track","band":"Stable +/-0.3 ppt"},{"label":"Improving","band":"Declining >0.3 ppt over 3 months"}],"horizon":"1-2 yr","current":{"status_label":"On track","value":"Overall unemployment 4.2%; Information sector -9,000 jobs, Professional/Business Services +36,000","as_of":"June 2026","note":"Mixed by subsector -- Information is shedding jobs but Professional & Business Services overall is still adding, keeping the headline rate stable.","source_url":"https://www.bls.gov/news.release/empsit.nr0.htm"}},{"id":"tech-6","name":"AI regulation activity","source":"IAPP / NCSL / MultiState AI legislation trackers","cadence":"Quarterly","description":"Regulatory overhead that could shape hiring, compliance costs, and product velocity.","thresholds":[{"label":"Accelerating","band":"New enacted state/federal AI laws this quarter"},{"label":"On track","band":"Bills advancing but not enacted"},{"label":"Stalling","band":"No significant legislative movement"}],"horizon":"3-5 yr","current":{"status_label":"Accelerating","value":"1,561 state AI bills introduced by March 2026; new laws enacted in CO, CA, NY, CT","as_of":"Q1-Q2 2026","note":"Colorado's comprehensive AI Act (SB 205) takes effect June 30, 2026; California, New York, and Connecticut all enacted algorithmic-pricing laws this year. No federal AI law has advanced.","source_url":"https://www.ailawsbystate.com/trends"}}]}]},{"name":"Future of Work","trends":[{"id":"fow-skills","title":"Skills-Based Hiring Replaces Degree Requirements","indicators":[{"id":"fow-1","name":"Share of postings dropping degree requirements","source":"LinkedIn Economic Graph / Indeed Hiring Lab","cadence":"Quarterly","description":"Labor-market side view that cross-validates the Higher Ed credential-substitution trend.","thresholds":[{"label":"Accelerating","band":">1 ppt/quarter increase"},{"label":"On track","band":"0.3-1 ppt/quarter increase"},{"label":"Stalling","band":"Flat or reversing"}],"horizon":"1-2 yr","current":{"status_label":"Stalling","value":"Same data as He-5: composition-adjusted share up to 18.6%","as_of":"November 2025","note":"Employer survey commitments (23% report removing requirements per Lumina-Gallup) haven't yet shown up in the composition-adjusted posting data.","source_url":"https://www.bestcolleges.com/news/employers-nix-degree-requirements-still-value-college/"}},{"id":"fow-2","name":"Skills-based hiring adoption rate","source":"LinkedIn Talent Solutions annual report","cadence":"Annual","description":"Whether employers report actually changing hiring practice, not just posting language.","thresholds":[{"label":"Accelerating","band":">5 ppt YoY increase"},{"label":"On track","band":"1-5 ppt YoY increase"},{"label":"Stalling","band":"<1 ppt or flat"}],"horizon":"3-5 yr","current":{"status_label":"No update","value":"","as_of":"","note":"Could not confirm a 2026 LinkedIn Talent Solutions adoption-rate figure in this run -- related research (Harvard/Burning Glass, OneTen) suggests actual hiring-pattern change is lagging stated commitments, but no clean YoY adoption number was found. Needs a targeted follow-up search.","source_url":""}},{"id":"fow-3","name":"WEF net displacement forecast","source":"World Economic Forum Future of Jobs Report","cadence":"Biennial (watch for interim commentary)","description":"Structural, long-horizon signal on net job creation vs. displacement from automation/AI.","thresholds":[{"label":"Worsening","band":"Forecast revised toward net displacement"},{"label":"On track","band":"Consistent with prior forecast"},{"label":"Improving","band":"Revised toward net creation"}],"horizon":"5+ yr","current":{"status_label":"On track","value":"2025 report still the operative forecast; interim LinkedIn data shows +1.3M AI-linked jobs globally","as_of":"WEF Future of Jobs 2025; LinkedIn interim data January 2026","note":"No new WEF edition yet (next full report expected 2027). Interim LinkedIn data suggests AI is a net job creator so far, not the net-displacement scenario some feared -- consistent with, not worse than, the 2025 forecast.","source_url":"https://www.weforum.org/stories/2026/01/ai-has-already-added-1-3-million-new-jobs-according-to-linkedin-data/"}}]},{"id":"fow-hybrid","title":"Hybrid Work Norm Solidifies, RTO Mandates Plateau","indicators":[{"id":"fow-4","name":"Return-to-office mandate tracker","source":"Flex Index / WFH Research","cadence":"Quarterly","description":"Whether major employers are still tightening in-office requirements or have plateaued.","thresholds":[{"label":"Tightening","band":"Net increase in full-RTO mandates"},{"label":"Plateaued","band":"No significant net change"},{"label":"Loosening","band":"Net increase in flexible/hybrid policies"}],"horizon":"1-2 yr","current":{"status_label":"Tightening","value":"34% of US firms now fully in-office, up from 27% at end of 2025","as_of":"February 2026","note":"Continued wave of mandates (Home Depot, Stellantis, Microsoft phased return) -- still a minority position, but growing quarter over quarter.","source_url":"https://www.cnbc.com/2026/02/02/5-days-in-office-is-the-least-popular-way-to-work-bosses-require-it-anyway.html"}},{"id":"fow-5","name":"Remote job postings share","source":"Ladders / FlexJobs remote work reports","cadence":"Monthly","description":"Direct measure of remote-eligible hiring supply.","thresholds":[{"label":"Declining","band":"Share falling >1 ppt/quarter"},{"label":"Stable","band":"+/-1 ppt/quarter"},{"label":"Growing","band":"Rising >1 ppt/quarter"}],"horizon":"All","current":{"status_label":"No update","value":"","as_of":"","note":"Did not find a clean, current Ladders/FlexJobs posting-share figure in this run. Related BLS/Flex Index data shows overall remote work participation (22.6% in March 2026) essentially flat versus prior year -- suggestive of 'Stable' but not a direct match to the named source. Needs a targeted follow-up search.","source_url":""}},{"id":"fow-6","name":"Overall quits rate (JOLTS)","source":"BLS JOLTS","cadence":"Monthly","description":"General labor market confidence/mobility context for RTO leverage.","thresholds":[{"label":"Accelerating","band":"Quits rate >= 2.4%"},{"label":"On track","band":"2.0-2.4%"},{"label":"Easing","band":"<2.0%"}],"horizon":"All","current":{"status_label":"Easing","value":"Quits rate 1.9%","as_of":"May 2026","note":"Below the 'on track' band -- workers are moving jobs less, consistent with reduced leverage to resist RTO mandates.","source_url":"https://www.bls.gov/news.release/jolts.htm"}}]}]}]};
+
+const FALLBACK_DATA = SEED_DATA;
+
+function cadenceColor(cadence){
+  const c = cadence.toLowerCase();
+  if (c.includes('month')) return 'var(--tag-monthly)';
+  if (c.includes('quarter')) return 'var(--tag-quarterly)';
+  if (c.includes('annual') || c.includes('biennial')) return 'var(--tag-annual)';
+  return 'var(--tag-other)';
+}
+
+function statusClass(label){
+  const l = (label||'').toLowerCase();
+  if (['worsening','declining','stalling','tightening','easing'].includes(l)) return 'worsen';
+  if (['on track','stable','plateaued','improving','accelerating','growing','loosening'].includes(l)) return 'ontrack';
+  return 'ease';
+}
+
+function renderCard(indicator, topColor){
+  const cur = indicator.current || {};
+  const label = cur.status_label || 'No update';
+  const cls = statusClass(label);
+  const thresholdsHtml = (indicator.thresholds||[]).map(t => `
+    <div class="status-box ${statusClass(t.label)}">
+      <span class="lab">${t.label}</span>${t.band}
+    </div>`).join('');
+
+  return `
+  <div class="card">
+    <div class="topbar" style="background:${topColor}"></div>
+    <div class="head">
+      <div class="meta">
+        <span class="source">${indicator.source}</span>
+        <span class="cadence-tag" style="background:${topColor}">${indicator.cadence}</span>
+      </div>
+      <div class="name">${indicator.name}</div>
+    </div>
+    <div class="desc-label">What we're tracking</div>
+    <div class="desc">${indicator.description}</div>
+    <div class="desc-label">Current read</div>
+    <div class="status-box ${cls}">
+      <span class="lab">${label}${cur.value ? ' — ' + cur.value : ''}</span>
+      ${cur.note || 'Awaiting first scheduled check.'}
+    </div>
+    ${cur.as_of ? `<div class="asof">As of ${cur.as_of}</div>` : ''}
+    <div class="footer">
+      <span class="horizon">${indicator.horizon}</span>
+      ${cur.source_url ? `<a class="src-link" href="${cur.source_url}" target="_blank">source ↗</a>` : `<span class="src-link">${indicator.source}</span>`}
+    </div>
+  </div>`;
+}
+
+function renderDomain(domain){
+  return domain.trends.map(trend => `
+    <div class="trend-block">
+      <h2 class="trend-title">${trend.title}</h2>
+      <p class="trend-sub">${trend.indicators.length} indicators tracked</p>
+      <div class="grid">
+        ${trend.indicators.map(ind => renderCard(ind, cadenceColor(ind.cadence))).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function render(data){
+  const nav = document.getElementById('domainNav');
+  const main = document.getElementById('main');
+  const updated = document.getElementById('updatedAt');
+
+  updated.textContent = data.generated_at
+    ? 'Last updated: ' + new Date(data.generated_at).toLocaleString()
+    : 'No data yet — run the agent to populate this dashboard';
+
+  if (!data.domains || data.domains.length === 0){
+    main.innerHTML = '<div class="empty">No data yet. Run agent.py (or trigger the GitHub Action) to populate the dashboard.</div>';
+    return;
+  }
+
+  nav.innerHTML = data.domains.map((d,i) =>
+    `<button data-i="${i}" class="${i===0?'active':''}">${d.name}</button>`
+  ).join('');
+
+  function show(i){
+    [...nav.children].forEach((b,idx)=>b.classList.toggle('active', idx===i));
+    const banner = data.note === 'demo'
+      ? '<div class="banner">Showing sample data — connect DATA_URL to your live data.json to see real results.</div>'
+      : (data === FALLBACK_DATA
+          ? '<div class="banner">Showing the initial research run (July 7, 2026), embedded directly in this file. Point DATA_URL at your hosted data.json once the scheduled agent is live to replace this automatically.</div>'
+          : '');
+    main.innerHTML = banner + renderDomain(data.domains[i]);
+  }
+  nav.querySelectorAll('button').forEach(b => b.addEventListener('click', () => show(+b.dataset.i)));
+  show(0);
+}
+
+fetch(DATA_URL)
+  .then(r => { if(!r.ok) throw new Error('no data.json yet'); return r.json(); })
+  .then(render)
+  .catch(() => {
+    // No live data reachable yet — show empty state rather than fake numbers
+    render(FALLBACK_DATA);
+  });
+</script>
+
+</body>
+</html>
