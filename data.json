@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T13:45:53.748564+00:00",
+  "generated_at": "2026-08-31T19:21:06.471420+00:00",
   "domains": [
     {
       "name": "Higher Education",
@@ -32,9 +32,9 @@
               "horizon": "1-2 yr",
               "current": {
                 "status_label": "Improving",
-                "value": "Total postsecondary enrollment reached 18.6 million students, up 1.0% year over year",
+                "value": "Total postsecondary enrollment was 18.6 million students, up 1.0% year over year (+192,000).",
                 "as_of": "Spring 2026",
-                "note": "The latest National Student Clearinghouse Research Center final spring report shows positive year-over-year enrollment growth, which falls in the Improving band.",
+                "note": "The latest National Student Clearinghouse Research Center spring estimate shows positive year-over-year growth, so it falls in the Improving band.",
                 "source_url": "https://nscresearchcenter.org/final-spring-enrollment-trends/"
               },
               "history": [
@@ -85,6 +85,12 @@
                   "status_label": "Improving",
                   "value": "Total postsecondary enrollment reached 18.6 million students, up 1.0% year over year",
                   "as_of": "Spring 2026"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Improving",
+                  "value": "Total postsecondary enrollment was 18.6 million students, up 1.0% year over year (+192,000).",
+                  "as_of": "Spring 2026"
                 }
               ]
             },
@@ -112,9 +118,9 @@
               "horizon": "3-5 yr",
               "current": {
                 "status_label": "Worsening",
-                "value": "U.S. high school graduates projected to peak in 2025, then decline about 13% to below 3.4 million by 2041; through 2037, the 2024 projections imply about 750,000 fewer cumulative graduates than the 2020 projections.",
+                "value": "3.9M U.S. high school graduates projected at the 2025 peak, declining to 3.4M by 2041; about 750,000 fewer graduates through 2037 than the 2020 forecast",
                 "as_of": "December 2024",
-                "note": "The latest WICHE 11th edition is a downward revision from the prior forecast, showing lower future graduating classes and fewer cumulative graduates through the prior projection horizon.",
+                "note": "The latest WICHE edition revised the pipeline lower versus the prior forecast, indicating a steeper decline in future high school graduates.",
                 "source_url": "https://www.wiche.edu/wp-content/uploads/2024/12/2024-Knocking-at-the-College-Door-final.pdf"
               },
               "history": [
@@ -165,6 +171,12 @@
                   "status_label": "Worsening",
                   "value": "U.S. high school graduates projected to peak in 2025, then decline about 13% to below 3.4 million by 2041; through 2037, the 2024 projections imply about 750,000 fewer cumulative graduates than the 2020 projections.",
                   "as_of": "December 2024"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Worsening",
+                  "value": "3.9M U.S. high school graduates projected at the 2025 peak, declining to 3.4M by 2041; about 750,000 fewer graduates through 2037 than the 2020 forecast",
+                  "as_of": "December 2024"
                 }
               ]
             },
@@ -192,9 +204,9 @@
               "horizon": "All",
               "current": {
                 "status_label": "Improving",
-                "value": "59.1% FAFSA completion rate for the high school class of 2026, versus 53.8% for the class of 2025 at the same point (+5.3 percentage points).",
-                "as_of": "through June 26, 2026",
-                "note": "Classified as Improving because the latest NCAN-reported completion rate is more than 5% ahead of the prior cycle at the same point.",
+                "value": "59.1% FAFSA completion rate for the high school class of 2026; class of 2025 was 53.8% through the same date",
+                "as_of": "Through June 26, 2026",
+                "note": "The latest NCAN tracker-based figure is ahead of the prior cycle by about 5.3 percentage points, exceeding the +5% improvement threshold.",
                 "source_url": "https://ncan.org/Web/News/Class-of-2026-Sets-New-June-30-FAFSA-Completion-Record.aspx"
               },
               "history": [
@@ -245,6 +257,12 @@
                   "status_label": "Improving",
                   "value": "59.1% FAFSA completion rate for the high school class of 2026, versus 53.8% for the class of 2025 at the same point (+5.3 percentage points).",
                   "as_of": "through June 26, 2026"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Improving",
+                  "value": "59.1% FAFSA completion rate for the high school class of 2026; class of 2025 was 53.8% through the same date",
+                  "as_of": "Through June 26, 2026"
                 }
               ]
             }
@@ -278,9 +296,9 @@
               "horizon": "3-5 yr",
               "current": {
                 "status_label": "On track",
-                "value": "Undergraduate certificates +5.7% year over year to 579,400; associate degrees +2.6% to 865,400, with combined degree growth roughly 2.7%.",
-                "as_of": "Academic year 2024-25",
-                "note": "Certificate completions grew about twice as fast as degree completions, so non-degree growth is outpacing degrees but not by more than 3x.",
+                "value": "Undergraduate certificates grew 5.7% year over year to 579,400 completers; associate degrees grew 2.6% to 865,400, and overall undergraduate credentials grew 3.2%.",
+                "as_of": "2024-25 academic year",
+                "note": "Certificate completions are still growing faster than degree completions, but by roughly about 2x rather than more than 3x, so this falls in the 1-3x band.",
                 "source_url": "https://nscresearchcenter.org/undergraduate-degree-earners/"
               },
               "history": [
@@ -331,6 +349,12 @@
                   "status_label": "On track",
                   "value": "Undergraduate certificates +5.7% year over year to 579,400; associate degrees +2.6% to 865,400, with combined degree growth roughly 2.7%.",
                   "as_of": "Academic year 2024-25"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "On track",
+                  "value": "Undergraduate certificates grew 5.7% year over year to 579,400 completers; associate degrees grew 2.6% to 865,400, and overall undergraduate credentials grew 3.2%.",
+                  "as_of": "2024-25 academic year"
                 }
               ]
             },
@@ -358,10 +382,10 @@
               "horizon": "1-2 yr",
               "current": {
                 "status_label": "Stalling",
-                "value": "Indeed found 19.3% of U.S. job postings required a bachelor\u2019s degree or higher, up from 16.6% in November 2023; only a small majority, 51%, listed no formal education requirement.",
+                "value": "51% of US Indeed job postings had no formal education requirement; 19.3% required a bachelor's degree or higher, up from 16.6% in November 2023",
                 "as_of": "November 2025",
-                "note": "The latest Indeed Hiring Lab update shows degree requirements rising rather than postings without degree requirements increasing, so the removal-rate trend is flat or reversing.",
-                "source_url": "https://www.hiringlab.org/2026/01/28/where-do-college-degrees-still-matter-in-a-skills-first-job-market/"
+                "note": "Classified as Stalling because the latest Indeed data show degree requirements rising since early 2024 rather than postings without degree requirements increasing.",
+                "source_url": "https://hiringlab.indeed.com/2026/01/28/where-do-college-degrees-still-matter-in-a-skills-first-job-market/"
               },
               "history": [
                 {
@@ -411,6 +435,12 @@
                   "status_label": "Stalling",
                   "value": "Indeed found 19.3% of U.S. job postings required a bachelor\u2019s degree or higher, up from 16.6% in November 2023; only a small majority, 51%, listed no formal education requirement.",
                   "as_of": "November 2025"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Stalling",
+                  "value": "51% of US Indeed job postings had no formal education requirement; 19.3% required a bachelor's degree or higher, up from 16.6% in November 2023",
+                  "as_of": "November 2025"
                 }
               ]
             },
@@ -438,10 +468,10 @@
               "horizon": "3-5 yr",
               "current": {
                 "status_label": "Accelerating",
-                "value": "54% reported curriculum design as an AI-impacted teaching-and-learning area; I found no separate public figure for new AI-related credentials in the latest EDUCAUSE AI Landscape Study.",
-                "as_of": "November 2024 survey; published February 2025",
-                "note": "This is classified as Accelerating because the latest EDUCAUSE AI Landscape Study shows a majority-level curriculum-adaptation signal, though the public summary does not provide a separate credential-building percentage.",
-                "source_url": "https://www.educause.edu/content/2025/2025-educause-ai-landscape-study/introduction-and-key-findings"
+                "value": "54% of respondents reported AI focus on curriculum design in teaching and learning; no separate public credential-creation percentage was found.",
+                "as_of": "Survey fielded November 4\u201318, 2024; published February 17, 2025",
+                "note": "The latest EDUCAUSE AI Landscape finding shows curriculum adaptation has reached a slim majority, which meets the majority-adoption threshold even though credential-specific data were not separately reported in the accessible results.",
+                "source_url": "https://www.educause.edu/content/2025/2025-educause-ai-landscape-study/use-cases"
               },
               "history": [
                 {
@@ -491,6 +521,12 @@
                   "status_label": "Accelerating",
                   "value": "54% reported curriculum design as an AI-impacted teaching-and-learning area; I found no separate public figure for new AI-related credentials in the latest EDUCAUSE AI Landscape Study.",
                   "as_of": "November 2024 survey; published February 2025"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Accelerating",
+                  "value": "54% of respondents reported AI focus on curriculum design in teaching and learning; no separate public credential-creation percentage was found.",
+                  "as_of": "Survey fielded November 4\u201318, 2024; published February 17, 2025"
                 }
               ]
             }
@@ -528,11 +564,11 @@
               ],
               "horizon": "1-2 yr",
               "current": {
-                "status_label": "No update",
-                "value": "2025 McKinsey State of AI reports 7% fully scaled and 31% scaling AI programs among organizations using AI; 62% remain experimenting or piloting.",
-                "as_of": "June 25-July 29, 2025",
-                "note": "The latest survey provides a current production/scaling snapshot, but I could not find a comparable prior-year McKinsey State of AI production-deployment figure needed to calculate YoY change against the threshold bands.",
-                "source_url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai/"
+                "status_label": "On track",
+                "value": "44% of respondents report AI is scaling across their enterprise, up from 38% a year earlier",
+                "as_of": "May\u2013June 2026",
+                "note": "The latest McKinsey State of AI survey shows a 6 percentage point YoY increase in enterprise-scale AI deployment, which falls in the 3\u201310 ppt On track band.",
+                "source_url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"
               },
               "history": [
                 {
@@ -582,6 +618,12 @@
                   "status_label": "No update",
                   "value": "2025 McKinsey State of AI reports 7% fully scaled and 31% scaling AI programs among organizations using AI; 62% remain experimenting or piloting.",
                   "as_of": "June 25-July 29, 2025"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "On track",
+                  "value": "44% of respondents report AI is scaling across their enterprise, up from 38% a year earlier",
+                  "as_of": "May\u2013June 2026"
                 }
               ]
             },
@@ -609,10 +651,10 @@
               "horizon": "All",
               "current": {
                 "status_label": "Accelerating",
-                "value": "6.28% of U.S. job postings were AI-related",
+                "value": "US AI-related postings share was 6.28% of all Indeed postings, up from 5.92% on June 30, 2026",
                 "as_of": "July 31, 2026",
-                "note": "Indeed Hiring Lab's AI Tracker shows the U.S. AI job-postings share rose from 5.92% on June 30 to 6.28% on July 31, an increase of about 0.36 percentage points in one month.",
-                "source_url": "https://raw.githubusercontent.com/hiring-lab/ai-tracker/main/AI_posting.csv"
+                "note": "Classified Accelerating because the share rose about 0.36 percentage points over the latest month, above the >0.2 ppts/month threshold.",
+                "source_url": "https://github.com/hiring-lab/ai-tracker/raw/refs/heads/main/AI_posting.csv"
               },
               "history": [
                 {
@@ -662,6 +704,12 @@
                   "status_label": "Accelerating",
                   "value": "6.28% of U.S. job postings were AI-related",
                   "as_of": "July 31, 2026"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Accelerating",
+                  "value": "US AI-related postings share was 6.28% of all Indeed postings, up from 5.92% on June 30, 2026",
+                  "as_of": "July 31, 2026"
                 }
               ]
             },
@@ -689,9 +737,9 @@
               "horizon": "1-2 yr",
               "current": {
                 "status_label": "Accelerating",
-                "value": "Combined 2026 capex guidance for Amazon, Google, Meta and Microsoft rose to $735-$750B from $695-$725B QoQ; Q2 spend was about $172B.",
+                "value": "Combined 2026 capex guidance for Microsoft, Google, Amazon and Meta was raised to roughly $735B-$750B in the July 2026 earnings cycle, from about $695B-$725B in April.",
                 "as_of": "Q2 2026",
-                "note": "The combined guidance was raised quarter over quarter, led by higher Amazon, Google and Meta capex plans while Microsoft\u2019s underlying investment was described as unchanged despite an accounting reclassification.",
+                "note": "Latest Q2 earnings commentary showed Amazon, Google and Meta lifting guidance, while Microsoft said underlying 2026 investment expectations were unchanged despite a lease-accounting shift, so the combined guidance rose QoQ.",
                 "source_url": "https://platformonomics.com/2026/07/follow-the-capex-q2-2026-scoreboard/"
               },
               "history": [
@@ -742,6 +790,12 @@
                   "status_label": "Accelerating",
                   "value": "Combined 2026 capex guidance for Amazon, Google, Meta and Microsoft rose to $735-$750B from $695-$725B QoQ; Q2 spend was about $172B.",
                   "as_of": "Q2 2026"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Accelerating",
+                  "value": "Combined 2026 capex guidance for Microsoft, Google, Amazon and Meta was raised to roughly $735B-$750B in the July 2026 earnings cycle, from about $695B-$725B in April.",
+                  "as_of": "Q2 2026"
                 }
               ]
             }
@@ -775,10 +829,10 @@
               "horizon": "All",
               "current": {
                 "status_label": "On track",
-                "value": "11,000 reported layoffs",
+                "value": "10,384 reported tech layoffs/month",
                 "as_of": "July 2026",
-                "note": "The latest complete month derivable from the Layoffs.fyi 2026 tracker totals 11,000 disclosed layoffs, which is within the 5,000-20,000 per month On track band.",
-                "source_url": "https://layoffs.fyi/2026-layoffs/"
+                "note": "The latest monthly layoffs.fyi-sourced figure I found is 10,384 for July 2026, which falls within the 5,000-20,000/month on-track band.",
+                "source_url": "https://www.onjob.io/trends/layoffs/"
               },
               "history": [
                 {
@@ -828,6 +882,12 @@
                   "status_label": "On track",
                   "value": "11,000 reported layoffs",
                   "as_of": "July 2026"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "On track",
+                  "value": "10,384 reported tech layoffs/month",
+                  "as_of": "July 2026"
                 }
               ]
             },
@@ -855,10 +915,10 @@
               "horizon": "1-2 yr",
               "current": {
                 "status_label": "Worsening",
-                "value": "Information unemployment rate 6.7%; Professional and business services 3.6% (not seasonally adjusted)",
+                "value": "Information unemployment rate: 6.7%; Professional and business services: 3.6%",
                 "as_of": "July 2026",
-                "note": "Information rose from 3.8% in April 2026 to 6.7% in July 2026, a 2.9 percentage point increase over 3 months, despite professional/business services declining over the same period.",
-                "source_url": "https://fred.stlouisfed.org/series/LNU04032237"
+                "note": "The Information rate rose from 3.8% in April 2026 to 6.7% in July 2026, a +2.9 ppt increase over 3 months, exceeding the worsening threshold despite Professional and business services declining.",
+                "source_url": "https://www.bls.gov/news.release/empsit.t14.htm"
               },
               "history": [
                 {
@@ -908,6 +968,12 @@
                   "status_label": "Worsening",
                   "value": "Information unemployment rate 6.7%; Professional and business services 3.6% (not seasonally adjusted)",
                   "as_of": "July 2026"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Worsening",
+                  "value": "Information unemployment rate: 6.7%; Professional and business services: 3.6%",
+                  "as_of": "July 2026"
                 }
               ]
             },
@@ -935,10 +1001,10 @@
               "horizon": "3-5 yr",
               "current": {
                 "status_label": "Accelerating",
-                "value": "New enacted state AI laws in Q3 2026, including Colorado HB 26-1263 signed July 1, Illinois SB 315 signed July 6, and Hawaii SB 3001/HB 2137 signed July 13.",
-                "as_of": "Q3 2026 to date",
-                "note": "New state AI laws were enacted this quarter, indicating regulatory activity is adding fresh compliance obligations rather than only advancing bills.",
-                "source_url": "https://www.ncsl.org/financial-services/artificial-intelligence-legislation-database"
+                "value": "11 states had passed chatbot AI laws; Hawaii had a similar law awaiting governor signature",
+                "as_of": "June 2026",
+                "note": "IAPP reported multiple state AI chatbot laws already passed as of June 2026, indicating enacted state-level AI regulatory activity rather than only pending bills.",
+                "source_url": "https://www.iapp.org/news/a/chatbot-laws-coming-to-a-state-near-you"
               },
               "history": [
                 {
@@ -988,6 +1054,12 @@
                   "status_label": "Accelerating",
                   "value": "New enacted state AI laws in Q3 2026, including Colorado HB 26-1263 signed July 1, Illinois SB 315 signed July 6, and Hawaii SB 3001/HB 2137 signed July 13.",
                   "as_of": "Q3 2026 to date"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Accelerating",
+                  "value": "11 states had passed chatbot AI laws; Hawaii had a similar law awaiting governor signature",
+                  "as_of": "June 2026"
                 }
               ]
             }
@@ -1026,9 +1098,9 @@
               "horizon": "1-2 yr",
               "current": {
                 "status_label": "Stalling",
-                "value": "19.3% of U.S. Indeed job postings required a bachelor\u2019s degree or higher; 51% did not ask for any formal education requirement",
+                "value": "51% of U.S. Indeed job postings listed no formal education requirement; 19.3% required a bachelor\u2019s degree or higher, up from 16.6% in November 2023",
                 "as_of": "November 2025",
-                "note": "The latest Indeed Hiring Lab update shows bachelor\u2019s-degree requirements rising from 16.6% in November 2023 to 19.3% in November 2025, so the degree-dropping/no-degree trend is reversing rather than increasing.",
+                "note": "The latest Indeed data shows degree requirements rising since early 2024 rather than no-degree postings increasing, so the degree-dropping trend is flat or reversing.",
                 "source_url": "https://hiringlab.indeed.com/2026/01/28/where-do-college-degrees-still-matter-in-a-skills-first-job-market/"
               },
               "history": [
@@ -1079,6 +1151,12 @@
                   "status_label": "Stalling",
                   "value": "19.3% of U.S. Indeed job postings required a bachelor\u2019s degree or higher; 51% did not ask for any formal education requirement",
                   "as_of": "November 2025"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Stalling",
+                  "value": "51% of U.S. Indeed job postings listed no formal education requirement; 19.3% required a bachelor\u2019s degree or higher, up from 16.6% in November 2023",
+                  "as_of": "November 2025"
                 }
               ]
             },
@@ -1106,10 +1184,10 @@
               "horizon": "3-5 yr",
               "current": {
                 "status_label": "No update",
-                "value": "No recent comparable adoption-rate figure found; the 2025 LinkedIn Future of Recruiting report gives skills-based search and quality-of-hire proxies, not a YoY adoption rate for employers actually changing hiring practice.",
-                "as_of": "2025 report; survey in September 2024 and platform data through October 2024",
-                "note": "Cannot classify against the YoY threshold bands because the latest LinkedIn Talent Solutions report does not publish a comparable skills-based hiring adoption rate or YoY change.",
-                "source_url": "https://business.linkedin.com/hire/resources/future-of-recruiting"
+                "value": "No comparable skills-based hiring adoption-rate update found; the latest LinkedIn Future of Recruiting report cites 93% of TA pros saying accurate skills assessment is crucial and a +12% quality-hire association for companies with the most skills-based searches, but not an adoption rate.",
+                "as_of": "September 2024 survey / platform data through October 2024",
+                "note": "The 2025 LinkedIn Talent Solutions Future of Recruiting report does not publish a year-over-year employer adoption rate for actually changing skills-based hiring practice, so the threshold bands cannot be applied confidently.",
+                "source_url": "https://business.linkedin.com/hire/resources/future-of-recruiting?veh=top-soft-skills-ai-talent"
               },
               "history": [
                 {
@@ -1159,6 +1237,12 @@
                   "status_label": "No update",
                   "value": "No recent comparable adoption-rate figure found; the 2025 LinkedIn Future of Recruiting report gives skills-based search and quality-of-hire proxies, not a YoY adoption rate for employers actually changing hiring practice.",
                   "as_of": "2025 report; survey in September 2024 and platform data through October 2024"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "No update",
+                  "value": "No comparable skills-based hiring adoption-rate update found; the latest LinkedIn Future of Recruiting report cites 93% of TA pros saying accurate skills assessment is crucial and a +12% quality-hire association for companies with the most skills-based searches, but not an adoption rate.",
+                  "as_of": "September 2024 survey / platform data through October 2024"
                 }
               ]
             },
@@ -1186,9 +1270,9 @@
               "horizon": "5+ yr",
               "current": {
                 "status_label": "Improving",
-                "value": "170 million jobs created and 92 million displaced by 2030; net +78 million jobs (+7%)",
-                "as_of": "2025\u20132030 forecast, published January 7, 2025",
-                "note": "The latest WEF Future of Jobs Report shifts from the 2023 forecast of net displacement (-14 million jobs) to a net creation forecast (+78 million jobs), so it is revised toward net creation.",
+                "value": "WEF Future of Jobs Report 2025 forecasts 170 million jobs created and 92 million displaced by 2030, a net gain of 78 million jobs.",
+                "as_of": "January 2025 (forecast through 2030)",
+                "note": "This is revised toward net creation versus the 2023 report's forecast of 69 million created and 83 million displaced, a net loss of 14 million jobs.",
                 "source_url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/in-full/2-jobs-outlook/"
               },
               "history": [
@@ -1239,6 +1323,12 @@
                   "status_label": "Improving",
                   "value": "170 million jobs created and 92 million displaced by 2030; net +78 million jobs (+7%)",
                   "as_of": "2025\u20132030 forecast, published January 7, 2025"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Improving",
+                  "value": "WEF Future of Jobs Report 2025 forecasts 170 million jobs created and 92 million displaced by 2030, a net gain of 78 million jobs.",
+                  "as_of": "January 2025 (forecast through 2030)"
                 }
               ]
             }
@@ -1272,9 +1362,9 @@
               "horizon": "1-2 yr",
               "current": {
                 "status_label": "Tightening",
-                "value": "34% of U.S. firms require full-time office presence, up 2 percentage points year over year; Fortune 100 full-time-office requirement is 29%.",
+                "value": "Full-time office requirements at 34% of U.S. firms, up 2 percentage points year over year; required office time up 12% since early 2024 while actual attendance rose only 1\u20133%.",
                 "as_of": "Q3 2025",
-                "note": "Flex Index's latest report shows a small net increase in full-time in-office requirements, though flexibility remains the norm at most firms.",
+                "note": "Flex Index\u2019s latest available report shows a modest net increase in strict office requirements, especially among large employers, so this classifies as tightening rather than plateauing.",
                 "source_url": "https://www.flexindex.com/stats"
               },
               "history": [
@@ -1325,6 +1415,12 @@
                   "status_label": "Tightening",
                   "value": "34% of U.S. firms require full-time office presence, up 2 percentage points year over year; Fortune 100 full-time-office requirement is 29%.",
                   "as_of": "Q3 2025"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "Tightening",
+                  "value": "Full-time office requirements at 34% of U.S. firms, up 2 percentage points year over year; required office time up 12% since early 2024 while actual attendance rose only 1\u20133%.",
+                  "as_of": "Q3 2025"
                 }
               ]
             },
@@ -1351,11 +1447,11 @@
               ],
               "horizon": "All",
               "current": {
-                "status_label": "Declining",
-                "value": "6.3% of $100K+ Ladders job postings were fully remote, down from 7.4% in Q1 2025 (-1.1 ppt QoQ)",
-                "as_of": "Q2 2025",
-                "note": "Classified Declining because the remote postings share fell by 1.1 percentage points quarter over quarter, exceeding the >1 ppt decline threshold.",
-                "source_url": "https://www.theladders.com/career-advice/data-six-figure-remote-hybrid-job-availability-crashes-nearly-15"
+                "status_label": "No update",
+                "value": "Latest recent FlexJobs report gives remote postings volume growth (+22% QoQ), but no remote postings share; latest Ladders share found was 6.3% remote in Q2 2025, down from 7.4% in Q1 2025",
+                "as_of": "Q2 2026 for FlexJobs volume; Q2 2025 for Ladders share",
+                "note": "I could not confidently classify the share against the percentage-point-per-quarter bands because the recent FlexJobs update reports posting-count growth rather than share, while the latest Ladders share figure found is over a year old.",
+                "source_url": "https://www.flexjobs.com/blog/post/flexjobs-remote-work-economy-index"
               },
               "history": [
                 {
@@ -1405,6 +1501,12 @@
                   "status_label": "Declining",
                   "value": "6.3% of $100K+ Ladders job postings were fully remote, down from 7.4% in Q1 2025 (-1.1 ppt QoQ)",
                   "as_of": "Q2 2025"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "No update",
+                  "value": "Latest recent FlexJobs report gives remote postings volume growth (+22% QoQ), but no remote postings share; latest Ladders share found was 6.3% remote in Q2 2025, down from 7.4% in Q1 2025",
+                  "as_of": "Q2 2026 for FlexJobs volume; Q2 2025 for Ladders share"
                 }
               ]
             },
@@ -1432,10 +1534,10 @@
               "horizon": "All",
               "current": {
                 "status_label": "On track",
-                "value": "2.0% (preliminary)",
+                "value": "2.0% quits rate (preliminary)",
                 "as_of": "June 2026",
-                "note": "The latest BLS JOLTS overall quits rate is 2.0%, which falls in the 2.0\u20132.4% On track band.",
-                "source_url": "https://www.bls.gov/jlt/"
+                "note": "The latest BLS JOLTS quits rate was 2.0%, which falls in the 2.0-2.4% On track band.",
+                "source_url": "https://www.bls.gov/news.release/jolts.htm"
               },
               "history": [
                 {
@@ -1484,6 +1586,12 @@
                   "checked_at": "2026-08-24T13:45:53.748564+00:00",
                   "status_label": "On track",
                   "value": "2.0% (preliminary)",
+                  "as_of": "June 2026"
+                },
+                {
+                  "checked_at": "2026-08-31T19:21:06.471420+00:00",
+                  "status_label": "On track",
+                  "value": "2.0% quits rate (preliminary)",
                   "as_of": "June 2026"
                 }
               ]
